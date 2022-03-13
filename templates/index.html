@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+ <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="cover">
+    <h1>Discover what's out there.</h1>
+    <form class="flex-form">
+      <label for="from">
+        <i class="ion-location"></i>
+      </label>
+      <input type="search" placeholder="Find Project.." />
+      <input type="submit" value="Search" />
+    </form>
+    <br />
+    <div id="container">
+      <button class="btn default" type="button login-button" id="button1">
+        Log in
+      </button>
+      <button class="btn default" type="button signup-button" id="button2">
+        Sign up
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock%}
