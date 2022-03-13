@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block style%}
-    <style href="{% static 'css/login.css'%}"></style>
-{% end block %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+{% endblock %}
 {% block content %}
     <div class="wrapper fadeInDown">
         <div id="formContent">
             <!-- Tabs Titles -->
             <h2 class="active"> Log In </h2>
-            <h2 class="inactive underlineHover">Sign Up </h2>
+            <h2 class="inactive underlineHover"> <a href="{% url 'sign-up' %}">Sign Up</a></h2>
             <!-- Login Form -->
             <form>
                 <input type="text" id="login" class="fadeIn second" name="login" placeholder="username">
@@ -21,4 +22,4 @@
             </div>
         </div>
     </div>
-{% end block%}
+{% endblock%}

@@ -16,12 +16,16 @@
     </form>
     <br />
     <div id="container">
-      <button class="btn default" type="button login-button" id="button1">
-        Log in
-      </button>
-      <button class="btn default" type="button signup-button" id="button2">
-        Sign up
-      </button>
+      <form action="{% url 'login' %}" style="display: inline;">
+        <button class="btn default" type="button login-button" id="button1" >
+          Log in
+        </button>
+      </form>
+      <form action="{% url 'sign-up' %}" style="display: inline;"> 
+        <button class="btn default" type="button signup-button" id="button2">
+          Sign up
+        </button>
+      </form>
     </div>
   </div>
 </div>

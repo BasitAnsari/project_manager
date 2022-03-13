@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style%}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/signup.css'%}">
+{% endblock %}
+{% block content %}
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="inactive underlineHover"><a href="{% url 'login' %}">Login</a></h2>
+      <h2 class="active">Sign Up </h2>
+  
+      <!-- Login Form -->
+      <form method="POST" class="float-container">
+        {% csrf_token %}
+         <div class="float-child">
+          <input type="text" id="first_name" class="fadeIn first" name="firtsname" placeholder="First name" required>
+          <input type="text" id="last_name" class="fadeIn second" name="lastname" placeholder="Last name" required>
+          <input type="text" name="email" id="email" placeholder="e-mail" required />
+          <input type="password" id="password" class="fadeIn fourth" name="password" placeholder="Password" required>
+          
+          </div>
+          
+          <div class="vl"></div>
+        
+        <div class="float-child">
+          <input type="text" id="password" class="fadeIn first" name="stu_id" placeholder="Student ID" required>
+          <input type="text" id="login" class="fadeIn second" name="mob_num" placeholder="Mobile no." required>
+          <input type="text" class="fadeIn third" name="stu_col" list="collegename" placeholder="College" required>
+            <datalist id="collegename">
+              <option value="Veermata Jijabai Technological Institute">
+              <option value="Sardar Patel Institute of Technology">
+              <option value="KJ Somaiya College of Engineering">
+              <option value="Dwarkadas J Sanghvi College of Engineering">
+              <option value="Sardar Patel College of Engineering">
+              <option value="Thadomal Shahani Engineering College">
+              <option value="Vivekanand Education Society's Institute of Technology">
+              <option value="KJ Somaiya Institute of Engineering and Information Technology">
+              </option>
+            </datalist>
+          <input type="text" id="confirmpassword" class="fadeIn fourth" name="login" placeholder="Some field :/" required>
+        </div>
+        <input type="submit" class="fadeIn fourth" value="Sign Up">
+      </div>
+    </div>
+  </div>
+{% endblock%}
