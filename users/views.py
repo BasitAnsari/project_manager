@@ -1,22 +1,18 @@
 import profile
 from django.shortcuts import redirect, render
-from users.models import Profile
+from .forms import UserRegisterForm,ProfileForm
 # Create your views here.
-def login_view(request):
-    return render(request, "Registration/login.html")
-
 def signup_view(request):
     if request.method == "POST":
-        profile = Profile()
-        profile.username = request.POST.get('username')
-        profile.first_name = request.POST.get('first_name')
-        profile.last_name = request.POST.get('last_name')
-        profile.email = request.POST.get('email')
-        profile.password = request.POST.get('password')
-        profile.stu_id = request.POST.get('stu_id')
-        profile.stu_col = request.POST.get('stu_col')
-        profile.mob_num = request.POST.get('mob_num')
-        profile.save()
-        
-        return redirect('home')
-    return render(request, "Registration/signup.html")
+        u_form = UserRegisterForm(request.POST)
+        p_form = ProfileForm(request.POST)
+        if u_form.is_valid() and p_form.is_valid():
+            user = u_form.save()
+            p_form = p_form.save(commit=False)
+            p_form.user = user
+            p_form.save()
+            return redirect('login')
+    else:
+        u_form = UserRegisterForm(request.POST)
+        p_form = ProfileForm(request.POST)
+    return render(request, "Registration/signup.html", {'u_form': u_form, 'p_form': p_form})
