@@ -1,7 +1,8 @@
 from multiprocessing import context
 import profile
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
 from .forms import UserRegisterForm,ProfileForm
 # Create your views here.
 def signup_view(request):
@@ -33,3 +34,14 @@ def login_view(request):
             }
             return render(request, "Registration/login.html",context)
     return render(request, "Registration/login.html")
+@login_required(login_url='login/')
+def profile_view(request):
+    user = request.user
+    return render(request, 'Registration/profile.html')
+
+@login_required(login_url='login/')
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('login')
+    return render(request, 'Registration/logout.html')
