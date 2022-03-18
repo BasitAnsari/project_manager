@@ -44,8 +44,9 @@ def login_view(request):
 def profile_view(request):
     profileobj = Profile.objects.get(user=request.user)
     userobj = User.objects.get(id=profileobj.user_id)
-    # projobj = Project.objects.get(user=profileobj.user_id)
-    projobj = Project.objects.all()
+    projobj = Project.objects.filter(user=profileobj.user_id)
+    # projobj = Project.objects.all()
+    print(projobj)
 
     context = {
         'user': userobj,
