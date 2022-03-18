@@ -44,7 +44,11 @@
               Profile
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              {% if user.profile.is_faculty %}
+              <a class="dropdown-item" href="{% url 'faculty' %}">View Profile</a>
+              {% else%}
               <a class="dropdown-item" href="{% url 'profile' %}">View Profile</a>
+              {% endif %}
               <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
             </div>
           </li>

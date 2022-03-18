@@ -10,6 +10,7 @@ def project_create_view(request):
         if form.is_valid():
             instance = form.save(commit=False)
             instance.user = request.user
+            instance.institute = request.user.profile.stu_col
             instance.save()
             return redirect('home')
     context = {

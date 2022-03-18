@@ -7,11 +7,22 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-6">
-                <h1>Some shit</h1>
-            </div>
-            <div class="col-6">
-                <h1>Some more shit</h1>
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">{{user.username}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{profile.year}} {{profile.course}}</h6>
+                      <h6 class="card-subtitle mb-2 text-muted">{{profile.stu_col}}</h6>
+                      <hr>
+                      <div class="d-flex justify-content-around">
+                          <p class="d-inline">{{profile.stu_id}}</p>
+                          <p class="d-inline">{{profile.mob_num}}</p>
+                          <p class="d-inline">{{user.email}}</p>
+                      </div>
+                      <a href="#" class="card-link">Card link</a>
+                      <a href="#" class="card-link">Another link</a>
+                    </div>
+                  </div>
             </div>
         </div>
         <div class="row">

@@ -1,5 +1,5 @@
 from multiprocessing import context
-import profile
+from users.models import User, Profile
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
@@ -16,8 +16,8 @@ def signup_view(request):
             p_form.save()
             return redirect('login')
     else:
-        u_form = UserRegisterForm(request.POST)
-        p_form = ProfileForm(request.POST)
+        u_form = UserRegisterForm()
+        p_form = ProfileForm()
     return render(request, "Registration/signup.html", {'u_form': u_form, 'p_form': p_form})
 
 def login_view(request):
@@ -36,8 +36,13 @@ def login_view(request):
     return render(request, "Registration/login.html")
 @login_required(login_url='login/')
 def profile_view(request):
-    user = request.user
-    return render(request, 'Registration/profile.html')
+    profileobj = Profile.objects.get(user= request.user)
+    userobj = User.objects.get(id= profileobj.user_id)
+    context = {
+        'user' : userobj,
+        'profile': profileobj,
+    }
+    return render(request, 'Registration/profile.html', context)
 
 @login_required(login_url='login/')
 def logout_view(request):

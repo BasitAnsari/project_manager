@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style%}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{user.username}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{profile.stu_col}}</h6>
+                    <hr>
+                    <div class="d-flex justify-content-start">
+                        <p class="d-inline">{{user.email}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <h1>LIST OF ALL PROJECTS UNDER THIS PROFILE GOES HERE</h1>
+        </div>
+    </div>
+</div>
+{% endblock%}

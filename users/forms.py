@@ -47,7 +47,7 @@ class UserRegisterForm(UserCreationForm):
         }
 class ProfileForm(forms.ModelForm):
     class Meta:
-        College_CHOICES = [
+        College_CHOICES = (
         ('Veermata Jijabai Technological Institute','Veermata Jijabai Technological Institute'),
         ('Sardar Patel Institute of Technology','Sardar Patel Institute of Technology'),
         ('KJ Somaiya College of Engineering','KJ Somaiya College of Engineering'),
@@ -56,9 +56,9 @@ class ProfileForm(forms.ModelForm):
         ('Thadomal Shahani Engineering College','Thadomal Shahani Engineering College'),
         ('Vivekanand Education Societys Institute of Technology','Vivekanand Education Societys Institute of Technology'),
         ('KJ Somaiya Institute of Engineering and Information Technology','KJ Somaiya Institute of Engineering and Information Technology'),
-    ]
+        )
         model = Profile
-        fields = ['stu_id', 'mob_num', 'stu_col']
+        fields = ['stu_id', 'mob_num', 'stu_col','course','year']
         widgets = {
             'stu_id': forms.NumberInput(
                 attrs={'min':000000000000,'max': 999999999999,'type': 'number'}
@@ -66,8 +66,8 @@ class ProfileForm(forms.ModelForm):
             'mob_num': forms.NumberInput(
                 attrs={'min':0000000000,'max': 9999999999,'type': 'number'}
                 ),
-            'stu_col' : forms.ChoiceField(
-                           widget=forms.Select(choices=College_CHOICES)
-    )
+            'course': forms.TextInput(),
+            'year': forms.TextInput(),
+            'stu_col' : forms.Select(),
                         
         }
