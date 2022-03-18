@@ -29,6 +29,20 @@
             <div class="col-12">
                 <h1>LIST OF ALL PROJECTS UNDER THIS PROFILE GOES HERE</h1>
             </div>
+            {% for projects in project %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{poject.title}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{project.statement}}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">{{project.domain}}</h6>
+                    <hr>
+                    <div class="d-flex justify-content-around">
+                        <p class="d-inline">{{project.category}}</p>
+                        <p class="d-inline">{{project.institute}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock%}

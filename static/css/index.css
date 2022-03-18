@@ -1,6 +1,8 @@
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700');
+/* @import url("https://fonts.googleapis.com/css?family=Lato:400,700"); */
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
@@ -24,18 +26,30 @@ h1 {
   margin: 0 0 1.5rem;
 }
 
-i {
+/* i {
   font-size: 1.3rem;
-}
+} */
 
-
-
-.cover  {
+.cover {
   height: 100vh;
   width: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.05)), to(rgba(0,0,0,0)));
-  background: -webkit-linear-gradient(top, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
-  background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0) 100%);
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgba(0, 0, 0, 0.05)),
+    to(rgba(0, 0, 0, 0))
+  );
+  background: -webkit-linear-gradient(
+    top,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
   padding: 20px 50px;
   display: -webkit-box;
   display: flex;
@@ -68,7 +82,7 @@ i {
   display: flex;
   z-index: 10;
   position: relative;
-  width: 500px;
+  width: 700px;
   box-shadow: 4px 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -87,7 +101,7 @@ input[type="search"] {
   flex-basis: 500px;
 }
 
-@media all and (max-width:800px) {
+@media all and (max-width: 800px) {
   body {
     font-size: 0.9rem;
   }

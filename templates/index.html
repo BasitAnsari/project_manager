@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block style %}
- <!-- <link rel="stylesheet" href="{% static 'css/index.css' %}"> -->
-{% endblock %}
+<!-- {% block style %}
+ <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %} -->
 {% block content %}
 <div class="container">
   <div class="cover">
@@ -15,24 +15,26 @@
     <h1>Discover what's out there.</h1>
     <form class="flex-form">
       <label for="from">
-        <i class="ion-location"></i>
+        <!-- <i class="icon-location"></i> -->
       </label>
       <input type="search" placeholder="Find Project.." />
       <input type="submit" value="Search" />
     </form>
     <br />
-    <div id="container">
-      <form action="{% url 'login' %}" style="display: inline;">
-        <button class="btn default" type="button login-button" id="button1" >
-          Log in
-        </button>
-      </form>
-      <form action="{% url 'sign-up' %}" style="display: inline;"> 
-        <button class="btn default" type="button signup-button" id="button2">
-          Sign up
-        </button>
-      </form>
-    </div>
+    {% if not user.is_authenticated %}
+      <div id="container">
+        <form action="{% url 'login' %}" style="display: inline;">
+          <button class="btn default" type="button login-button" id="button1" >
+            Log in
+          </button>
+        </form>
+        <form action="{% url 'sign-up' %}" style="display: inline;"> 
+          <button class="btn default" type="button signup-button" id="button2">
+            Sign up
+          </button>
+        </form>
+      </div>
+    {% endif %}
   </div>
 </div>
 {% endblock%}
