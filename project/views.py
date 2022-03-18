@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, render
 from .models import Project
@@ -28,3 +29,23 @@ def project_detail(request,pk):
     }
     return render(request,"Project/project_details.html", context)
         
+def project_search(request):
+    query = request.session['query']
+    if query is not None:
+        qs = Project.objects.filter(title__icontains= query)
+    else :
+        qs = Project.objects.all()
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        domain = request.POST.get('domain')
+        category = request.POST.get('category')
+        if title is not None :
+            qs = qs.filter(title__icontains= title)
+        if domain is not None :
+            qs = qs.filter(domain__icontains= domain)
+        if category is not None :
+            qs = qs.filter(category__icontains= category)
+    context = {
+        'qs' : qs
+    }
+    return render(request, 'Project/project_list.html',context)

@@ -1,7 +1,7 @@
 from turtle import title
 from django import forms
 from .models import Project
-
+from users.models import User
 class ProjectForm(forms.ModelForm):
 
     class Meta:
@@ -15,6 +15,6 @@ class ProjectForm(forms.ModelForm):
         widgets = {
             'title': forms.TextInput(),
             'Domain': forms.TextInput(),
-            'Category': forms.TextInput(),
+            'Category': forms.Select(),
             'Statement': forms.TextInput(),
         }
