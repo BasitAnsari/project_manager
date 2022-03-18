@@ -8,7 +8,11 @@ class Project(models.Model):
     domain = models.CharField(max_length= 128)
     category = models.CharField(max_length= 128)
     institute = models.CharField(max_length= 256,default=NULL)
+    is_approved = models.BooleanField(default=False)
     #user info
     user = models.ForeignKey(User, null=True, blank=True, on_delete=models.CASCADE)
+    
+    def get_absolute_url(self):
+        return f"/project-detail/{self.id}/"
     
     

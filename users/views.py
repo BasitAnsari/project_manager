@@ -51,7 +51,7 @@ def profile_view(request):
     context = {
         'user': userobj,
         'profile': profileobj,
-        'projects': projobj,
+        'qs': projobj,
     }
     return render(request, 'Registration/profile.html', context)
 

@@ -97,7 +97,7 @@ h1 {
   -webkit-appearance: none;
 }
 
-input[type="search"] {
+.search{
   flex-basis: 500px;
 }
 

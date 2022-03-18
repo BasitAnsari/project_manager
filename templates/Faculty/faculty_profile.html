@@ -21,7 +21,33 @@
     </div>
     <div class="row">
         <div class="col-12">
-            <h1>LIST OF ALL PROJECTS UNDER THIS PROFILE GOES HERE</h1>
+            <h1>SOME SORTING FORM AREA</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Domain</th>
+                    <th scope="col">Lead Name</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for instance in qs %}
+                    <tr>
+                        <th scope="row">{{instance.id}}</th>
+                        <td>{{instance.title}}</td>
+                        <td>{{instance.domain}}</td>
+                        <td>{{instance.user}}</td>
+                        <td><a href="{{instance.get_absolute_url}}">View Details</a></td>
+                    </tr>
+                {% endfor%}
+                </tbody>
+              </table>
         </div>
     </div>
 </div>

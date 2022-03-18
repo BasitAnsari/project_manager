@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block style%}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row report_items p-2">
+        <div class="col-12">
+            <legend>Title : {{object.title}}</legend>
+            <h1>More Details will come here</h1>
+            <h1 class="">Approval Status : {{object.is_approved}}</h1>
+            {% if user.profile.is_faculty %}
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Approve">
+                </form>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock%}
