@@ -5,31 +5,42 @@
 {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="row report_items p-2">
+    <div class="row mt-5">
         <div class="col-12">
-            <legend>Title : {{object.title}}</legend>
-            <h1>More Details will come here</h1>
-            <h1 class="">Approval Status : {{object.is_approved}}</h1>
-            <h1 class="">Problem Statement : {{object.statement}}</h1>
-            <h1 class="">Institute : {{object.institute}}</h1>
-            <h1 class="">Plagarised : {{object.plagarised}} %</h1>
-            <h1 class="">Plagarised With : {{object.plagarised_with}}</h1>
-            {% if user.profile.is_faculty and object.is_approved is not True %}
-                {% if 'project-detail' in request.path %}
-                    <form action="" method="post">
-                        {% csrf_token %}
-                        <input type="submit" value="Approve" name="value">
-                    </form>
-                {% endif %}
-            {% else %}
-                <form action="" method="post">
-                    {% csrf_token %}
-                    <input type="submit" value="Disapprove" name="value">
-                </form>
-            {% endif %}
-            {% if object.category == "Research" and object.user != user %}
-                <button class="btn btn-outline-primary">Want To Contribute?</button>
-            {% endif %}
+            <div class="card">
+                <div class="card-header d-flex">
+                    <div class="col-6 pt-2">
+                        <h5 class="card-title">Project Details</h5>
+                    </div>
+                    <div class="col-6 d-flex justify-content-end">
+                        <a class="btn btn-info mr-2">Want to Contribute?</a>
+                        <a href ='{{object.github_url}}' target="_blank" class="btn btn-dark">GitHub</a>
+                    </div>
+                  
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Title: {{object.title}}</h5>
+                    <h6 class="card-subtitle mb-2 mr-5 text-muted">{{object.institute}}</h6>
+                    <span class="badge badge-dark p-2 mr-4">
+                        <h6 class="card-subtitle mb-2 d-inline">Domain: {{object.domain}}</h6>
+                    </span>
+                    <span class="badge badge-dark p-2">
+                        <h6 class="card-subtitle mb-2 d-inline">Category: {{object.category}}</h6>
+                    </span>
+                    <p class="card-text mt-2">Problem Statement : {{object.statement}}</p>
+                </div>
+              </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title">Plagerism Report:</h6>
+                  <p class="card-text">Maximum similarity : {{object.plagarised}} %</p>
+                  <p class="card-text">Maximum similarity with : {{object.plagarised_with}}</p>
+                </div>
+              </div>
         </div>
     </div>
 </div>

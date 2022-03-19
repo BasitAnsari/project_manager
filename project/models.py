@@ -20,6 +20,7 @@ class Project(models.Model):
     is_approved = models.BooleanField(default=False)
     plagarised = models.FloatField(null=True)
     plagarised_with = models.CharField(max_length=128, blank=True, null=True)
+    github_url = models.CharField(max_length=256)
     # user info
     user = models.ForeignKey(
         User, null=True, blank=True, on_delete=models.CASCADE)

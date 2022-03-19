@@ -10,11 +10,13 @@ class ProjectForm(forms.ModelForm):
             'title',
             'statement',
             'domain',
-            'category'
+            'category',
+            'github_url'
         ]
         widgets = {
             'title': forms.TextInput(),
             'Domain': forms.TextInput(),
             'Category': forms.Select(),
             'Statement': forms.TextInput(),
+            'github_url': forms.TextInput(),
         }

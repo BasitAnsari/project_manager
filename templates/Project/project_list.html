@@ -51,7 +51,7 @@
                     name="title">
                 </div>
                 <div class="row">
-                  <span class="badge badge-dark p-2">Searching For : {{title}}</span>
+                  <span class="badge badge-dark p-2">Searching For : {% if title %}{{title}} {% else %} All {% endif %}</span>
                 </div>
               </td>
               <td>
@@ -61,13 +61,13 @@
                     name="domain">
                 </div>
                 <div class="row">
-                  <span class="badge badge-dark p-2">Searching For : {{domain}}</span>
+                  <span class="badge badge-dark p-2">Searching For : {% if domain %}{{domain}} {% else %} All {% endif %}</span>
                 </div>
               </td>
               <td>
                 <div class="row">
                   <div class="mr-2 mb-2">
-                    <label class="sr-only" for="exampleFormControlSelect1">Example select</label>
+                    <label class="sr-only" for="exampleFormControlSelect1">Select Category</label>
                     <select class="form-control" id="exampleFormControlSelect1" name="category">
                       <option value="" selected disabled hidden>Choose Project Category</option>
                       <option>Ongoing</option>
@@ -78,7 +78,7 @@
                   </div>
                 </div>
                 <div class="row">
-                  <span class="badge badge-dark p-2">Searching For : {{category}}</span>
+                  <span class="badge badge-dark p-2">Searching For : {% if category %}{{category}} {% else %} All {% endif %}</span>
                 </div>
               </td>
               <td><button type="submit" class="btn btn-outline-dark mb-2">Search</button></td>
