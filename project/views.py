@@ -55,7 +55,7 @@ def project_detail(request, pk):
     if obj.plagarised is None:
         domain = obj.domain
         obj2 = Project.objects.filter(domain=domain)
-
+        dict = {'plagarised': []}
         results = []
         for i in obj2:
             if not i.id == obj.id:
@@ -65,15 +65,19 @@ def project_detail(request, pk):
                 pn = float(p[2])*100
                 pn = round(pn, 2)
                 print(pn)
+                d = {'title': p[1], 'num': pn}
+                dict['plagarised'].append(d)
+                print(dict)
                 results.append((p[1], pn))
         print(results)
         big = 0
         for title, num in results:
             if num > big:
                 big = num
-        plag = max(results, default=0)
-        obj.plagarised = plag
-        # obj.plagarised_with = ptitle
+                t = title
+        # plag = max(results, default=0)
+        obj.plagarised = big
+        obj.plagarised_with = t
     obj.save()
     context = {
         'object': obj
@@ -85,19 +89,27 @@ def project_search(request):
     query = request.session['query']
     if query is not None:
         qs = Project.objects.filter(title__icontains=query, is_approved=True)
+        context = {
+            'qs': qs,
+            'query': query
+        }
     else:
         qs = Project.objects.filter(is_approved=True)
+        context = {
+            'qs': qs,
+        }
     if request.method == 'POST':
         title = request.POST.get('title')
         domain = request.POST.get('domain')
         category = request.POST.get('category')
         if title is not None:
             qs = qs.filter(title__icontains=title)
+            context['title'] = title
         if domain is not None:
             qs = qs.filter(domain__icontains=domain)
+            context['domain'] = domain
         if category is not None:
             qs = qs.filter(category__icontains=category)
-    context = {
-        'qs': qs
-    }
+            context['category'] = category
+        context['qs'] = qs
     return render(request, 'Project/project_list.html', context)

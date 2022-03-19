@@ -4,8 +4,8 @@
 {% block style%}
 {% endblock %}
 {% block content %}
-<div class="container">
-      <div class="row mt-5">
+<div class="mx-5">
+  <!-- <div class="row mt-5">
         <div class="col-12">
             <form method="POST" class="form-inline">
                 {% csrf_token %}
@@ -26,32 +26,76 @@
                   <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
             </form>
         </div>
-      </div>
-    <div class="row justify-content-center">
-        <div class="col-12">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Title</th>
-                    <th scope="col">Domain</th>
-                    <th scope="col">Lead Name</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for instance in qs %}
-                    <tr>
-                        <th scope="row">{{instance.id}}</th>
-                        <td>{{instance.title}}</td>
-                        <td>{{instance.domain}}</td>
-                        <td>{{instance.user}}</td>
-                        <td><a href="{{instance.get_absolute_url}}">View Details</a></td>
-                    </tr>
-                {% endfor%}
-                </tbody>
-              </table>
-        </div>
+      </div> -->
+  <div class="row justify-content-center">
+    <div class="col-12">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Title</th>
+            <th scope="col">Domain</th>
+            <th scope="col">Project Category</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <form class="form-inline" method="post">
+              {% csrf_token %}
+              <th scope="row"></th>
+              <td>
+                <div class="row">
+                  <label class="sr-only" for="title-search">Title</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="title-search" placeholder="Search By Title"
+                    name="title">
+                </div>
+                <div class="row">
+                  <span class="badge badge-dark p-2">Searching For : {{title}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="row">
+                  <label class="sr-only" for="title-search">Domain</label>
+                  <input type="text" class="form-control mb-2 mr-sm-2" id="title-search" placeholder="Search By Domain"
+                    name="domain">
+                </div>
+                <div class="row">
+                  <span class="badge badge-dark p-2">Searching For : {{domain}}</span>
+                </div>
+              </td>
+              <td>
+                <div class="row">
+                  <div class="mr-2 mb-2">
+                    <label class="sr-only" for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="category">
+                      <option value="" selected disabled hidden>Choose Project Category</option>
+                      <option>Ongoing</option>
+                      <option>Complete</option>
+                      <option>Incomplete</option>
+                      <option>Research</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="badge badge-dark p-2">Searching For : {{category}}</span>
+                </div>
+              </td>
+              <td><button type="submit" class="btn btn-outline-dark mb-2">Search</button></td>
+            </form>
+          </tr>
+          {% for instance in qs %}
+          <tr>
+            <th scope="row">{{instance.id}}</th>
+            <td>{{instance.title}}</td>
+            <td>{{instance.domain}}</td>
+            <td>{{instance.category}}</td>
+            <td><a href="{{instance.get_absolute_url}}">View Details</a></td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
     </div>
+  </div>
 </div>
 {% endblock%}
