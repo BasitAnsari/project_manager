@@ -37,9 +37,9 @@ def project_detail(request,pk):
 def project_search(request):
     query = request.session['query']
     if query is not None:
-        qs = Project.objects.filter(title__icontains= query, is_approved = True)
+        qs = Project.objects.filter(title__icontains= query, is_approved= True)
     else :
-        qs = Project.objects.filter(is_approved = True)
+        qs = Project.objects.filter(is_approved= True)
     if request.method == 'POST':
         title = request.POST.get('title')
         domain = request.POST.get('domain')
