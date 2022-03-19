@@ -28,4 +28,3 @@ def faculty_view(request):
         return render(request, "Faculty/faculty_profile.html", context)
     else:
         return redirect('home')
-        

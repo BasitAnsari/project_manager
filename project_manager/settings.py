@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     #own
     'pages',
     'users',
-    'project'
+    'project',
+    'faculty'
 ]
 
 MIDDLEWARE = [
