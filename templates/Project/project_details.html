@@ -10,7 +10,9 @@
             <legend>Title : {{object.title}}</legend>
             <h1>More Details will come here</h1>
             <h1 class="">Approval Status : {{object.is_approved}}</h1>
+            <h1 class="">Problem Statement : {{object.statement}}</h1>
             <h1 class="">Institute : {{object.institute}}</h1>
+            <h1 class="">Plagarised : {{object.plagarised}}</h1>
             {% if user.profile.is_faculty and object.is_approved is not True %}
                 {% if 'project-detail' in request.path %}
                     <form action="" method="post">
