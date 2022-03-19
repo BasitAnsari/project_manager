@@ -19,6 +19,36 @@
             </div>
         </div>
     </div>
+    <div class="row mt-5">
+        <div class="col-12">
+            <form method="POST" class="form-inline">
+                {% csrf_token %}
+                <label class="sr-only" for="title-search">Title</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="title-search" placeholder="Search By Title" name="title">
+                <label class="sr-only" for="title-search">Domain</label>
+                <input type="text" class="form-control mb-2 mr-sm-2" id="title-search" placeholder="Search By Domain" name="domain">
+                <div class="mr-2 mb-2">
+                    <label class="sr-only" for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="category">
+                      <option value="" selected disabled hidden>Choose Project Category</option>
+                      <option>Ongoing</option>
+                      <option>Completed</option>
+                      <option>Incomplete</option>
+                      <option>Research</option>
+                    </select>
+                </div>
+                <div class="mr-2 mb-2">
+                    <label class="sr-only" for="exampleFormControlSelect1">Example select</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="apr">
+                      <option value="" selected disabled hidden>Show All</option>
+                      <option value="apr">Show only Approved</option>
+                      <option value="dapr">Show waiting for Approval</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-outline-dark mb-2">Search</button>
+            </form>
+        </div>
+      </div>
     <div class="row">
         <div class="col-12">
             <h1>SOME SORTING FORM AREA</h1>

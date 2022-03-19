@@ -4,9 +4,26 @@ from project.models import Project
 def faculty_view(request):
     if request.user.profile.is_faculty:
         faculty_col = request.user.profile.stu_col
-        project_qs = Project.objects.filter(institute = faculty_col)
+        qs = Project.objects.filter(institute = faculty_col)
+        if request.method == 'POST':
+            title = request.POST.get('title')
+            domain = request.POST.get('domain')
+            category = request.POST.get('category')
+            apr = request.POST.get('apr')
+            print(apr)
+            if title is not None :
+                qs = qs.filter(title__icontains= title)
+            if domain is not None :
+                qs = qs.filter(domain__icontains= domain)
+            if category is not None :
+                qs = qs.filter(category__icontains= category)
+            if apr is not None :
+                if apr == 'apr':
+                    qs = qs.filter(is_approved= True)
+                else:
+                    qs = qs.filter(is_approved= False)
         context = {
-            "qs" : project_qs
+            "qs" : qs
         }
         return render(request, "Faculty/faculty_profile.html", context)
     else:

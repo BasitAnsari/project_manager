@@ -23,7 +23,12 @@ def project_create_view(request):
 def project_detail(request,pk):
     obj = Project.objects.get(id= pk)
     if request.method == 'POST':
-        obj.is_approved = True
+        value = request.POST.get('value')
+        if value == 'Disapprove' :
+            obj.is_approved = False
+        else :
+            obj.is_approved = True
+        obj.save()
     context = {
         'object': obj
     }
@@ -32,9 +37,9 @@ def project_detail(request,pk):
 def project_search(request):
     query = request.session['query']
     if query is not None:
-        qs = Project.objects.filter(title__icontains= query)
+        qs = Project.objects.filter(title__icontains= query, is_approved = True)
     else :
-        qs = Project.objects.all()
+        qs = Project.objects.filter(is_approved = True)
     if request.method == 'POST':
         title = request.POST.get('title')
         domain = request.POST.get('domain')
