@@ -43,5 +43,32 @@
               </div>
         </div>
     </div>
+    {% if user.profile.is_faculty and user.profile.stu_col == object.institute %}
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                    <h6 class="card-title">User Information:</h6>
+                    <p class="card-text">User : {{object.user.first_name}} {{object.user.last_name}}</p>
+                    <p class="card-text">Institute : {{object.user.profile.stu_col}}</p>
+                    <p class="card-text">Year : {{object.user.profile.year}} | Course : {{object.user.profile.course}}</p>
+                    </div>
+                    <div class="card-header">
+                        {% if object.is_approved == False%}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-dark" type="submit" value="Approve" name="value">
+                            </form>
+                        {% else %}
+                            <form action="" method="post">
+                                {% csrf_token %}
+                                <input class="btn btn-danger" type="submit" value="Disapprove" name="value">
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock%}
